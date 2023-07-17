@@ -13,8 +13,9 @@
 #include <limits.h>
 #include <string.h>
 #include <math.h>
-
-
+int min(int a, int b) {
+    return a < b ? a : b;
+}
 
 void first(char arr[]){
 	int i=0;
@@ -135,7 +136,7 @@ void second(char arr[]){
 	//	if(arr[i]=='?'){str[j]='!';j++;}else if(arr[i]=='-'){}else if(arr[i]=='&'){str[j]='&';j++;str[j]='&';j++;}else{str[j]=arr[i]; j++;}
 	//	if(arr[i]=='t' && arr[i+1]=='h' && arr[i+2]=='e'){i=i+3;}
 	//	if(arr[i]>96 && arr[i]<123){str[j]=arr[i];j++;}
-
+		
 	//	if(arr[i]>64 && arr[i]<91){str[j]=arr[i]+32;j++;}
 
 	/*	if(arr[i]=='+'){str[j]='+';j++;
@@ -259,17 +260,17 @@ double fourth(double x, int n){
 else if(n>0){return x*fourth(x,n-1);}
 	else{return 1/fourth(x,(n*(-1)));}
 }
-int five(int arr[]) {
-	for (int i=1; i<strlen(arr);i++) {
+int five(int arr[],int n) {
+	for (int i=1; i<n;i++) {
 		if(arr[i] < arr[i - 1]) {
 			return 0;
 		}
 	}
 	return 1;
 }
-int six(int arr[],  int x) {
+int six(int arr[], int n, int x) {
 
-    for (int i=0;i<strlen(arr);i++) {
+    for (int i=0;i<n;i++) {
         if (arr[i]==x) {
             return i;
         }
@@ -309,6 +310,22 @@ int eighth(int arr[], int n) {
 	return res;
 }
 
+void nine(double arr[], int n){
+	double plus[n];
+	double minus[n];
+	int j=0;
+	int k=0;
+	double res=0;
+for(int i=0;i<n;i++){
+		if(arr[i]>=0){plus[j]=arr[i];j++;}
+		else{minus[k]=arr[i];k++;}
+}
+int k=min(j,k);
+for(int l=0;l<k;l++){
+	res = res +(minus[l]*plus[j-l-1]); 
+}
+printf("%lf\n",res);
+}
 
 void ten(int arr[], int n) {
     int i, j, maxIndex, temp;
@@ -339,7 +356,33 @@ void ten_b(int arr[], int n) {
         }
     }
 }
+int eleven(int arr[], int n, int x) {
+    int left=0;
+    int right=n-1;
+    int result=-1;
+    while (left<=right){
+        int mid=left+(right-left)/2;
+        if (arr[mid]==x){
+            return mid;
+        }
+        if (arr[mid]<x) {
+            left=mid+1;
+        } else {
+            right=mid-1;
+        }
+    }
+    return result;
+}
+void twenty_fourth(unsigned int arr[], int n){
+    unsigned int mask = 0xFF000000;
+    unsigned int latinMask = 0x00410000; 
 
+    for (int i = 0; i < n; i++) {
+        if ((arr[i] & mask) == latinMask) {
+            arr[i] &= 0x00FFFFFF; 
+        }
+    }
+}
 
 int main(void) {
 first("rgenuhwnc++c++-oc++oocabcdeh235a9rac+hg35135fonigheabc.");
