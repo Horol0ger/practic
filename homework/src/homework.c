@@ -14,6 +14,8 @@
 #include <string.h>
 #include <math.h>
 
+
+
 void first(char arr[]){
 	int i=0;
 	int a_counter=0;
